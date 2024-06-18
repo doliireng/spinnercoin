@@ -158,6 +158,6 @@ def main():
                 if level < maxautoupgrade:
                     print("mencoba upgrade")
                     auto_upgrade(query=query,id=id,tujuanlevel=maxautoupgrade)
-        break
+        
 main()
 
