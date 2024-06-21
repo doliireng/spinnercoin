@@ -58,7 +58,7 @@ def auto_upgrade(query,id,tujuanlevel):
     hp = init_data["spinners"][0]["hp"]
     howmanyklik = int(hp / level) 
     if tujuanlevel == level:
-        print(f"sudah level {tujuanlevel} tidak upgrade lagi")
+        print("sudah level" ,tujuanlevel, "tidak upgrade lagi")
         return
     response = requests.post(url=url,headers=header,json=body)
     print(response.json()["message"])
@@ -89,7 +89,7 @@ def click_spin(query,howmanyklik):
             }      
             klik-=25
             respones = requests.post(url=url,headers=header,json=body)
-            print(f"sisa {klik} klik")
+            print("sisa ", {klik}, " klik")
             time.sleep(1)
             response_spin(respones.json()["message"])
         if klik != 0:           
@@ -136,10 +136,10 @@ def main():
             level = init_data["spinners"][0]["level"]
             hp = init_data["spinners"][0]["hp"]
             id = init_data["user"]["mainSpinnerId"]
-            print(f"====Nama : {init_data["user"]["name"]}===")
-            print(f"Level : {level}")
-            print(f"Hp : {hp}")
-            print(f"Balance : {init_data["user"]["balance"]}")
+            print("=====Nama : "+init_data["user"]["name"]+"=====")
+            print("Level : ", level)
+            print("Hp : ",hp)
+            print("Balance : " ,init_data["user"]["balance"])
             howmanyklik = int(hp / level) 
             if hp == 0:
                 if init_data["spinners"][0]["endRepairTime"] == None:
@@ -158,6 +158,7 @@ def main():
                 if level < maxautoupgrade:
                     print("mencoba upgrade")
                     auto_upgrade(query=query,id=id,tujuanlevel=maxautoupgrade)
-        
+        print("mengulang setelah 20 detik")
+        time.sleep(20)
 main()
 
